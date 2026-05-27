@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de Amor 💌</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI', sans-serif;
+    }
+
+    body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow-x:hidden;
+  overflow-y:auto;
+  padding:40px 0;
+  position:relative;
+}
+
+    /* Corazones flotando */
+    .heart{
+     pointer-events:none;
+      position:absolute;
+      color:rgba(255,255,255,0.6);
+      font-size:20px;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float{
+      0%{
+        transform: translateY(100vh) scale(0);
+      }
+      100%{
+        transform: translateY(-10vh) scale(1.5);
+      }
+    }
+
+    /* Caja login */
+    .login-box{
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding:40px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 8px 30px rgba(0,0,0,0.2);
+      width:350px;
+      color:white;
+      position:absolute;
+    }
+
+    .login-box h2{
+      margin-bottom:20px;
+      font-size:28px;
+    }
+
+    .login-box input{
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:15px;
+      margin-top:10px;
+      outline:none;
+      font-size:16px;
+    }
+
+    .login-box button{
+      margin-top:20px;
+      padding:12px 25px;
+      border:none;
+      border-radius:20px;
+      background:#ff4d6d;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .login-box button:hover{
+      background:#ff1e56;
+      transform:scale(1.05);
+    }
+
+    /* Carta */
+     /* Carta */
+    .carta{
+      display:none;
+      width:80%;
+     max-width:650px;
+      background:white;
+      padding:40px;
+      border-radius:25px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.3);
+      text-align:center;
+      animation: aparecer 1s ease;
+      position:relative;
+      z-index:10;
+    }
+
+    @keyframes aparecer{
+      from{
+        opacity:0;
+        transform:scale(0.8);
+      }
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+    }
+
+    .carta h1{
+      color:#ff4d6d;
+      margin-bottom:20px;
+      font-size:40px;
+    }
+
+    .carta p{
+      font-size:20px;
+      line-height:1.8;
+      color:#444;
+    }
+
+    .firma{
+      margin-top:30px;
+      font-size:24px;
+      color:#ff4d6d;
+      font-style:italic;
+    }
+
+    .foto{
+      margin-top:25px;
+    }
+
+    .foto img{
+      width:220px;
+      border-radius:20px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .error{
+      color:yellow;
+      margin-top:10px;
+    }
+    /* Fotos decorativas */
+
+.foto-side{
+  position:fixed;
+ width:230px;
+  border:8px solid rgba(255,255,255,0.5);
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.15);
+  opacity:0.35;
+  transition:0.4s;
+  z-index:1;
+  backdrop-filter: blur(2px);
+}
+
+.foto-side:hover{
+  opacity:0.9;
+  transform:scale(1.05);
+}
+
+/* IZQUIERDA */
+
+.f1{
+  left:20px;
+  top:80px;
+  transform:rotate(-8deg);
+}
+
+.f2{
+  left:35px;
+  top:360px;
+  transform:rotate(6deg);
+}
+
+.f3{
+  left:25px;
+  top:650px;
+  transform:rotate(-5deg);
+}
+
+.f4{
+  left:40px;
+  top:940px;
+  transform:rotate(7deg);
+}
+
+/* DERECHA */
+
+.f5{
+  right:20px;
+  top:80px;
+  transform:rotate(8deg);
+}
+
+.f6{
+  right:35px;
+  top:360px;
+  transform:rotate(-6deg);
+}
+
+.f7{
+  right:25px;
+  top:650px;
+  transform:rotate(5deg);
+}
+
+.f8{
+  right:40px;
+  top:940px;
+  transform:rotate(-7deg);
+}
+  </style>
+</head>
+<body>
+<!-- Fotos decorativas -->
+
+<img src="1.jpeg" class="foto-side f1">
+<img src="2.jpeg" class="foto-side f2">
+<img src="3.jpeg" class="foto-side f3">
+<img src="4.jpeg" class="foto-side f4">
+
+<img src="7.jpeg" class="foto-side f5">
+<img src="6.jpeg" class="foto-side f6">
+<img src="5.jpeg" class="foto-side f7">
+<img src="8.jpeg" class="foto-side f8">
+  <!-- Corazones -->
+  <script>
+    for(let i=0;i<30;i++){
+      let heart=document.createElement("div");
+      heart.className="heart";
+      heart.innerHTML="❤";
+      heart.style.left=Math.random()*100+"vw";
+      heart.style.animationDuration=(Math.random()*5+5)+"s";
+      heart.style.fontSize=(Math.random()*20+10)+"px";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <!-- Pantalla contraseña -->
+  <div class="login-box" id="login">
+    <h2>💖 Carta dedicada al amor de mi vida 💖</h2>
+    <p>Quien es el amor de mi vida???💖💖💖</p>
+
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="verificar()">Abrir Carta</button>
+
+    <div class="error" id="error"></div>
+  </div>
+
+  <!-- Carta -->
+  <div class="carta" id="carta">
+    <h1>MI NIÑO PRECIOSO ❤️</h1>
+
+    <p>
+      Tú el amor de mi vida!!!!<br><br>
+
+      Desde que llegaste a mi vida todo ah sido mucha felicidad y diversión mi amor
+      te doy gracias por ser un chico de gran corazón, de monitos sentimientos
+      gracias por amarme tanto mi amor, valoro lo mucho que me amas 
+      eres muy importante en mi vida conejito ❤️❤️❤️❤️❤️✨<br><br>
+
+      Gracias por existir, por hacerme sentir especial, espero que todo esto te guste 
+      pues lo he echo con todo mi corazon para ti mi amor, en este dia tan especial 
+      quiero que lo recuerdes con mucho amor precioso, pues tu eres tan importante para mi
+      que te quiero para toda la vida, por hoy y siempre.❤️✨❤️✨💕<br><br>
+
+      Quiero seguir creando recuerdos muy bonitos contigo mi amor, se que no soy tan perfecta pero,
+      hago todo lo posible para que te sientas amado por mi, quiero que todo esto te haga muy feliz
+      y te llegue a tu corazon, me gusta mucho tu voz, tu cabello, tus ojos, tu cuerpo todo chabochoooo
+      jajajajaj y sobre todo que seas tu mismo mi amor, me encantas mi amor, muy feliz cumpleaños mi niño hermosoooo
+      tu seguiras siendo mi bebe precioso aunque tengas 20 añotessss jajajaja te amooooo te amoooooo TE AMOOOOOOOOOO.
+      ❤️✨❤️✨💕❤️✨❤️✨💕❤️
+    </p>
+
+    <div class="foto">
+      <!-- Cambia la imagen -->
+      <img src="pollo.jpeg" alt="El amor de mi vida❤️✨ ">
+    </div>
+
+    <div class="firma">
+      Con todo mi amor para ti precioso. 💌
+    </div>
+  </div>
+
+  <script>
+    function verificar(){
+
+  let contraseña = "Diego <3";
+
+  let input = document.getElementById("password").value;
+
+  if(input === contraseña){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("carta").style.display = "block";
+
+    // Reproducir música
+    document.getElementById("musica").play();
+
+  }else{
+    document.getElementById("error").innerHTML = "❌ Contraseña incorrecta";
+  }
+}
+  </script>
+<audio id="musica" loop>
+    <source src="Virlán García - MMXX's [Official Video].mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
